@@ -11,25 +11,29 @@ export class AppComponent {
   title = 'introAngular';
   userName = 'Ertugrul';
   email = 'ertugrulgurkan16@gmail.com';
-  message:string ='';
-  isShowAllItems :boolean = true;
-  constructor(){
+  message: string = '';
+  isShowAllItems: boolean = true;
+  constructor() {
     console.log(todoItems[0].isCompleted);
   }
 
-  todoItems: TodoItem[]=todoItems;
+  todoItems: TodoItem[] = todoItems;
 
-  filterList(){
+  filterList() {
     this.isShowAllItems = !this.isShowAllItems;
     if (this.isShowAllItems) {
-       this.todoItems = todoItems; 
+      this.todoItems = todoItems;
+    } else {
+      this.todoItems = this.todoItems.filter((x) => !x.isCompleted);
     }
-    else{
-      this.todoItems = this.todoItems.filter(x=>!x.isCompleted);
-    }
-
   }
-  getButtonText(){
-    return this.isShowAllItems ? "Show To Do" : "Show All";
+
+  addNewItem(name: string) {
+    console.log(name);
+    let newItem = new TodoItem(name, false);
+    this.todoItems.push(newItem);
+  }
+  getButtonText() {
+    return this.isShowAllItems ? 'Show To Do' : 'Show All';
   }
 }

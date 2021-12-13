@@ -3,6 +3,10 @@
   <p>User Name: {{userName}}</p>
   <span>{{email}}</span>
   <div>
+    <input type="text" name="" id="" class="form-control" #action>
+    <button class="btn btn-success" (click)="addNewItem(action.value)">Add New</button>
+  </div>
+  <div>
     <button class="btn btn-outline-primary" (click)="filterList()">{{getButtonText()}}</button>
   </div>
   <div *ngFor="let item of todoItems">
